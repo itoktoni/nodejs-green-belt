@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./src/generated/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int @id @default(autoincrement())
+  name String
+  email String
+  password String
+  account String
+  balance Int @default(0)
+}
+
+model Transaction {
+  id       Int @id @default(autoincrement())
+  name String
+  user Int
+  in Int
+  out Int
+  balance Int
+  date DateTime
+}
